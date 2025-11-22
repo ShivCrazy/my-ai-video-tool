@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate AI Video</title>
+</head>
+<body>
+    <h2>Generate AI Video</h2>
+
+    <form id="generateForm">
+        <label>Enter your script:</label><br>
+        <textarea id="script" rows="6" cols="40"></textarea><br><br>
+
+        <button type="button" onclick="generateVideo()">Generate Video</button>
+    </form>
+
+    <p id="status"></p>
+
+    <script>
+        async function generateVideo() {
+            const scriptText = document.getElementById("script").value;
+
+            if (!scriptText) {
+                alert("Please enter some text!");
+                return;
+            }
+
+            document.getElementById("status").innerText = "Generating video...";
+
+            const response = await fetch("/api/generate", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ script: scriptText })
+            });
+
+            const data = await response.json();
+
+            document.getElementById("status").innerText = 
+                "Video generated! Download link: " + data.url;
+        }
+    </script>
+
+</body>
+</html>
