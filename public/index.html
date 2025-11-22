@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>My AI Video Tool</title>
+</head>
+<body>
+  <h1>Welcome to My AI Video Tool</h1>
+  <p>Your backend server is LIVE!</p>
+
+  <button onclick="generate()">Generate AI Video</button>
+
+  <script>
+    async function generate() {
+      const res = await fetch('/api/generate', { method: 'POST' });
+      const data = await res.json();
+      alert(JSON.stringify(data));
+    }
+  </script>
+</body>
+</html>
