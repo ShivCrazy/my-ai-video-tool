@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Dashboard - My AI Video Tool</title>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  </head>
+
+  <body>
+    <h1>Your Dashboard</h1>
+    <p>You are now logged in.</p>
+
+    <button onclick="logout()">Logout</button>
+
+    <script>
+      const supabase = window.supabase.createClient(
+        "https://tjqziqeoitowrhwubofr.supabase.co",
+        "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InRqcXppcWVvaXRvd3Jod3Vib2ZyIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjM4MzcwNjgsImV4cCI6MjA3OTQxMzA2OH0.3mhPF_dLfJKokcK1Ds9E2D9mtln7lTaf-SYo_ZbfsLY"
+      );
+
+      async function logout() {
+        await supabase.auth.signOut();
+        alert("Logged out!");
+        window.location.href = "login.html";
+      }
+    </script>
+  </body>
+</html>
